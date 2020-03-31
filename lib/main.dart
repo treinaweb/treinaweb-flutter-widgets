@@ -9,6 +9,7 @@ class Main extends StatelessWidget {
     return MaterialApp(
       title: "Pet Life",
       home: new HomeScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
