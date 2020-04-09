@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lifepet_app/models/pet_model.dart';
+import 'package:lifepet_app/widgets/custom_navbar.dart';
 
 class RemedioScreen extends StatelessWidget {
   final Pet pet;
@@ -85,7 +86,13 @@ class RemedioScreen extends StatelessWidget {
             ),
           ],
         ),
-
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
+        backgroundColor: Colors.redAccent,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: CustomNavbar(paginaAberta: 1, pet: pet,),
     );
   }
 }

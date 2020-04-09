@@ -11,7 +11,7 @@ class Main extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Pet Life",
-      home: new RemedioScreen(pet: pets[0]),
+      home: new HomeScreen(),
       theme: ThemeData(
         primaryColor: Colors.redAccent,
       ),

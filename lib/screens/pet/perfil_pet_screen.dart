@@ -149,7 +149,7 @@ class PerfilPetScreen extends StatelessWidget {
         backgroundColor: Colors.redAccent,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: CustomNavbar(),
+      bottomNavigationBar: CustomNavbar(paginaAberta: 0, pet: pet,),
     );
   }
 }
