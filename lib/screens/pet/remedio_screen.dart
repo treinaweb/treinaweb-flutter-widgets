@@ -79,7 +79,7 @@ class RemedioScreen extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (_) => FormRemedioPetScreen(pet: pet,),
+              builder: (_) => FormRemedioPetScreen(id: pet.id,),
             ),
           );
         },
