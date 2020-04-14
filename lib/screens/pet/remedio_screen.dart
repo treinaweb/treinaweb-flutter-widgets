@@ -13,10 +13,10 @@ class RemedioScreen extends StatelessWidget {
   final RemedioService remedioService = RemedioService();
   Pet pet;
 
-//  RemedioScreen({this.id}){
-//   _getPet(id);
-//   _getRemedio(id);
-//  }
+  RemedioScreen({this.id}){
+   _getPet(id);
+   _getRemedio(id);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -119,11 +119,11 @@ class RemedioScreen extends StatelessWidget {
     );
   }
 
-//  void _getPet(String id) {
-//    pet = petService.getPet(id);
-//  }
-//
-//  void _getRemedio(String id) {
-//    remedioList = remedioService.getRemediosPet(id);
-//  }
+  void _getPet(String id) {
+    pet = petService.getPet(id);
+  }
+
+  void _getRemedio(String id) {
+    remedioList = remedioService.getRemediosPet(id);
+  }
 }
