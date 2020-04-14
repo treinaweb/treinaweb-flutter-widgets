@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:lifepet_app/models/pet_model.dart';
+import 'package:lifepet_app/models/remedio_model.dart';
 import 'package:lifepet_app/screens/pet/form_remedio_pet_screen.dart';
+import 'package:lifepet_app/services/pet_service.dart';
+import 'package:lifepet_app/services/remedio_service.dart';
 import 'package:lifepet_app/widgets/custom_navbar.dart';
 
 class RemedioScreen extends StatelessWidget {
-  final Pet pet;
+  final String id;
+  List<Remedio> remedioList = List();
+  final PetService petService = PetService();
+  final RemedioService remedioService = RemedioService();
+  Pet pet;
 
-  RemedioScreen({this.pet});
+//  RemedioScreen({this.id}){
+//   _getPet(id);
+//   _getRemedio(id);
+//  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,34 +65,12 @@ class RemedioScreen extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: ListView(
-                children: <Widget>[
-                  Card(
-                    elevation: 8.0,
-                    margin: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                    child: Container(
-                      child: ListTile(
-                        contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                        leading: Container(
-                          padding: EdgeInsets.only(right: 12),
-                          decoration: BoxDecoration(
-                            border: Border(
-                                right: BorderSide(width: 1.0, color: Colors.redAccent)
-                            ),
-                          ),
-                          child: Icon(Icons.healing, color: Colors.redAccent,),
-                        ),
-                        title: Text(
-                          pet.nome,
-                          style: TextStyle(fontWeight: FontWeight.w400),
-                        ),
-                        subtitle: Text(
-                          pet.descricao,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+              child: ListView.builder(
+                padding: EdgeInsets.all(10),
+                itemCount: remedioList.length,
+                itemBuilder: (context, index) {
+                  return _remedioCard(context, index);
+                },
               ),
             ),
           ],
@@ -102,4 +90,40 @@ class RemedioScreen extends StatelessWidget {
       bottomNavigationBar: CustomNavbar(paginaAberta: 1, pet: pet,),
     );
   }
+
+  Widget _remedioCard(BuildContext context, int index) {
+    return Card(
+      elevation: 8.0,
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+      child: Container(
+        child: ListTile(
+          contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          leading: Container(
+            padding: EdgeInsets.only(right: 12),
+            decoration: BoxDecoration(
+              border: Border(
+                  right: BorderSide(width: 1.0, color: Colors.redAccent)
+              ),
+            ),
+            child: Icon(Icons.healing, color: Colors.redAccent,),
+          ),
+          title: Text(
+            remedioList[index].nome,
+            style: TextStyle(fontWeight: FontWeight.w400),
+          ),
+          subtitle: Text(
+            remedioList[index].data,
+          ),
+        ),
+      ),
+    );
+  }
+
+//  void _getPet(String id) {
+//    pet = petService.getPet(id);
+//  }
+//
+//  void _getRemedio(String id) {
+//    remedioList = remedioService.getRemediosPet(id);
+//  }
 }
