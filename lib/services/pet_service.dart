@@ -29,4 +29,16 @@ class PetService {
   List getAllPets() {
     return _petList;
   }
+
+  void addPet(Pet pet){
+    _petList.add(Pet(
+      nome: pet.nome,
+      bio: pet.bio,
+      idade: pet.idade,
+      sexo: pet.sexo,
+      descricao: pet.descricao,
+      cor: pet.cor,
+      imageUrl: 'assets/images/toto.png',
+    ));
+  }
 }
