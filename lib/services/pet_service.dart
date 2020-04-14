@@ -1,9 +1,17 @@
+import 'dart:math';
+
 import 'package:lifepet_app/models/pet_model.dart';
 
 class PetService {
   final List<Pet> _petList = [];
 
-  PetService() {
+  static final PetService _singleton = PetService._internal();
+
+  factory PetService() {
+    return _singleton;
+  }
+
+  PetService._internal() {
     _petList.add(Pet(
         nome: "Totó",
         imageUrl: 'assets/images/toto.png',
@@ -38,6 +46,7 @@ class PetService {
       sexo: pet.sexo,
       descricao: pet.descricao,
       cor: pet.cor,
+      id: Random().nextInt(100).toString(),
       imageUrl: 'assets/images/toto.png',
     ));
   }
