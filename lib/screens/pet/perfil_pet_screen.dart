@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:lifepet_app/models/pet_model.dart';
+import 'package:lifepet_app/services/pet_service.dart';
 import 'package:lifepet_app/widgets/custom_navbar.dart';
 
 class PerfilPetScreen extends StatelessWidget {
 
-  final Pet pet;
+  final String id;
+  PetService service = PetService();
+  Pet pet;
 
-  PerfilPetScreen({this.pet});
+  PerfilPetScreen({this.id}){
+    _getPet(id);
+  }
 
   Widget _cartaoInfoPet(String label, String informacao) {
     return Container(
@@ -151,5 +156,9 @@ class PerfilPetScreen extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: CustomNavbar(paginaAberta: 0, pet: pet,),
     );
+  }
+
+  void _getPet(String id) {
+    pet = service.getPet(id);
   }
 }

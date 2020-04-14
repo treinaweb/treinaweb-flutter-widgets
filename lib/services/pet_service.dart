@@ -50,4 +50,10 @@ class PetService {
       imageUrl: 'assets/images/toto.png',
     ));
   }
+
+  Pet getPet(String id) {
+    return _petList.singleWhere((pet) {
+      return pet.id == id;
+    });
+  }
 }
