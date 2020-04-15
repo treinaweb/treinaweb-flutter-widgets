@@ -51,6 +51,16 @@ class PetService {
     ));
   }
 
+  void editPet(String id, Pet newPet) {
+    Pet petEditar = getPet(id);
+    petEditar.nome = newPet.nome;
+    petEditar.descricao = newPet.descricao;
+    petEditar.idade = newPet.idade;
+    petEditar.sexo = newPet.sexo;
+    petEditar.cor = newPet.cor;
+    petEditar.bio = newPet.bio;
+  }
+
   Pet getPet(String id) {
     return _petList.singleWhere((pet) {
       return pet.id == id;
