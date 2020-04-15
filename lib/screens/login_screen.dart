@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lifepet_app/widgets/botao_animado.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -103,7 +104,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     )
                   ],
-                )
+                ),
+                BotaoAnimado()
               ],
             )
           ],
