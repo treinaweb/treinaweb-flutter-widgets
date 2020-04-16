@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lifepet_app/screens/home_screen.dart';
 import 'package:lifepet_app/widgets/botao_animado.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -17,6 +18,23 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
       vsync: this,
       duration: Duration(seconds: 2)
     );
+
+    _animationController.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (_) => HomeScreen(),
+          ),
+        );
+      }
+    });
+  }
+
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 
   @override
