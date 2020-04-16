@@ -9,20 +9,29 @@ class BotaoAnimado extends StatelessWidget {
         begin: 320.0,
         end: 45.0
       ).animate(
-        new CurvedAnimation(
+        CurvedAnimation(
             parent: controller,
             curve: Interval(0.0, 0.150)
         )
-      );
+      ),
+      crescerBotao = Tween(
+        begin: 45.0,
+        end: 1000.0
+      ).animate(CurvedAnimation (
+        parent: controller,
+        curve: Interval(0.5, 1, curve: Curves.bounceOut)
+      ));
 
   final Animation<double> diminuirBotao;
+  final Animation<double> crescerBotao;
 
   Widget _construirAnimacao(BuildContext context, Widget child) {
     return InkWell(
       onTap: () {
         controller.forward();
       },
-      child: Container(
+      child: crescerBotao.value <= 45 ?
+      Container(
         height: 45,
         width: diminuirBotao.value,
         decoration: BoxDecoration(
@@ -32,7 +41,15 @@ class BotaoAnimado extends StatelessWidget {
         child: Center(
           child: _conteudoBotao(context),
         ),
-      ),
+      ) : Container(
+        height: crescerBotao.value,
+        width: crescerBotao.value,
+        decoration: BoxDecoration(
+          color: Colors.redAccent,
+          shape: crescerBotao.value < 500 ?
+            BoxShape.circle : BoxShape.rectangle
+        ),
+      )
     );
   }
 
