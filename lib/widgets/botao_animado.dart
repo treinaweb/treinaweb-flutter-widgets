@@ -53,6 +53,7 @@ class BotaoAnimado extends StatelessWidget {
     );
   }
 
+
   Widget _conteudoBotao(BuildContext context) {
     if (diminuirBotao.value > 55) {
       return Text('Login'.toUpperCase(),
