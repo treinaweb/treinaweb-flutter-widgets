@@ -11,6 +11,7 @@ class PetService {
     return _singleton;
   }
 
+
   PetService._internal() {
     _petList.add(Pet(
         nome: "Totó",
